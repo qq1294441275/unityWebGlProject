@@ -1,0 +1,18 @@
+ManifestFileVersion: 0
+CRC: 3282575117
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 56b1b90fd67cd51bac20e2d3e321606a
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 6370d3f9de9eca57f523bce048404a46
+HashAppended: 0
+ClassTypes:
+- Class: 48
+  Script: {instanceID: 0}
+Assets:
+- Assets/GameApp/Common/Shaders/UI/T_UIParticle.shader
+- Assets/GameApp/Common/Shaders/Model/Particles-Add-R.shader
+- Assets/GameApp/Common/Shaders/Model/Particles-Add-RGBA.shader
+Dependencies: []

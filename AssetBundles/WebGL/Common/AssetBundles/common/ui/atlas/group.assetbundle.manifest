@@ -1,0 +1,34 @@
+ManifestFileVersion: 0
+CRC: 743044358
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 62d7eedf01c6a0ce8c5645807ea694a8
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 460b4f5d62b6facbccf7c01637df8f00
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+Assets:
+- Assets/GameApp/Common/UI/Atlas/Group/ui_group_06.png
+- Assets/GameApp/Common/UI/Atlas/Group/ui_group_10.png
+- Assets/GameApp/Common/UI/Atlas/Group/ui_group_14.png
+- Assets/GameApp/Common/UI/Atlas/Group/ui_group_07.png
+- Assets/GameApp/Common/UI/Atlas/Group/ui_group_09.png
+- Assets/GameApp/Common/UI/Atlas/Group/ui_group_11.png
+- Assets/GameApp/Common/UI/Atlas/Group/ui_group_05.png
+- Assets/GameApp/Common/UI/Atlas/Group/ui_group_04.png
+- Assets/GameApp/Common/UI/Atlas/Group/ui_group_16.png
+- Assets/GameApp/Common/UI/Atlas/Group/ui_group_17.png
+- Assets/GameApp/Common/UI/Atlas/Group/ui_group_13.png
+- Assets/GameApp/Common/UI/Atlas/Group/ui_group_15.png
+- Assets/GameApp/Common/UI/Atlas/Group/ui_group_01.png
+- Assets/GameApp/Common/UI/Atlas/Group/ui_group_03.png
+- Assets/GameApp/Common/UI/Atlas/Group/ui_group_02.png
+- Assets/GameApp/Common/UI/Atlas/Group/ui_group_12.png
+- Assets/GameApp/Common/UI/Atlas/Group/ui_group_08.png
+Dependencies: []

@@ -1,0 +1,104 @@
+ManifestFileVersion: 0
+CRC: 1390776438
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 14bc1cb31febb6ece324debc0fa7f0aa
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 460b4f5d62b6facbccf7c01637df8f00
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+Assets:
+- Assets/GameApp/Common/UI/Atlas/Comm/ui_comm_sign_battle.png
+- Assets/GameApp/Common/UI/Atlas/Comm/ui_comm_sign_away.png
+- Assets/GameApp/Common/UI/Atlas/Comm/ui_role_04.png
+- Assets/GameApp/Common/UI/Atlas/Comm/ui_comm_alpha.png
+- Assets/GameApp/Common/UI/Atlas/Comm/ui_comm_pic_score.png
+- Assets/GameApp/Common/UI/Atlas/Comm/ui_equip_07.png
+- Assets/GameApp/Common/UI/Atlas/Comm/ui_comm_frame_rank_green.png
+- Assets/GameApp/Common/UI/Atlas/Comm/ui_comm_bg_underlay_h.png
+- Assets/GameApp/Common/UI/Atlas/Comm/ui_comm_bg_underlay_g.png
+- Assets/GameApp/Common/UI/Atlas/Comm/ui_main_032.png
+- Assets/GameApp/Common/UI/Atlas/Comm/ui_comm_tab_b_act.png
+- Assets/GameApp/Common/UI/Atlas/Comm/ui_comm_sign_arrow_c.png
+- Assets/GameApp/Common/UI/Atlas/Comm/ui_comm_tab_a_01_nor.png
+- Assets/GameApp/Common/UI/Atlas/Comm/ui_main_12.png
+- Assets/GameApp/Common/UI/Atlas/Comm/ui_comm_sign_plus_a.png
+- Assets/GameApp/Common/UI/Atlas/Comm/ui_comm_btn_e.png
+- Assets/GameApp/Common/UI/Atlas/Comm/ui_role_22.png
+- Assets/GameApp/Common/UI/Atlas/Comm/ui_comm_btn_a.png
+- Assets/GameApp/Common/UI/Atlas/Comm/ui_comm_tab_a_02_act.png
+- Assets/GameApp/Common/UI/Atlas/Comm/ui_comm_sign_arrow_b.png
+- Assets/GameApp/Common/UI/Atlas/Comm/ui_comm_frame_rank_gold.png
+- Assets/GameApp/Common/UI/Atlas/Comm/ui_pet_10.png
+- Assets/GameApp/Common/UI/Atlas/Comm/ui_comm_frame_choose.png
+- Assets/GameApp/Common/UI/Atlas/Comm/ui_comm_sign_captain.png
+- Assets/GameApp/Common/UI/Atlas/Comm/ui_role_63.png
+- Assets/GameApp/Common/UI/Atlas/Comm/ui_comm_frame_rank_orange.png
+- Assets/GameApp/Common/UI/Atlas/Comm/ui_comm_mask_square.png
+- Assets/GameApp/Common/UI/Atlas/Comm/ui_comm_tab_a_04_nor.png
+- Assets/GameApp/Common/UI/Atlas/Comm/ui_comm_bg_underlay_d.png
+- Assets/GameApp/Common/UI/Atlas/Comm/ui_comm_bg_underlay_b.png
+- Assets/GameApp/Common/UI/Atlas/Comm/ui_comm_tab_a_01_act.png
+- Assets/GameApp/Common/UI/Atlas/Comm/ui_comm_line_b.png
+- Assets/GameApp/Common/UI/Atlas/Comm/ui_role_44.png
+- Assets/GameApp/Common/UI/Atlas/Comm/ui_equip_28.png
+- Assets/GameApp/Common/UI/Atlas/Comm/ui_comm_frame_rank_purple.png
+- Assets/GameApp/Common/UI/Atlas/Comm/ui_comm_mask_scroll.png
+- Assets/GameApp/Common/UI/Atlas/Comm/ui_comm_sign_yinpiao.png
+- Assets/GameApp/Common/UI/Atlas/Comm/ui_comm_sign_notice.png
+- Assets/GameApp/Common/UI/Atlas/Comm/ui_comm_line_c.png
+- Assets/GameApp/Common/UI/Atlas/Comm/ui_comm_frame_rank_white.png
+- Assets/GameApp/Common/UI/Atlas/Comm/ui_comm_sign_plus_c.png
+- Assets/GameApp/Common/UI/Atlas/Comm/ui_comm_tab_a_03_act.png
+- Assets/GameApp/Common/UI/Atlas/Comm/ui_comm_btn_d.png
+- Assets/GameApp/Common/UI/Atlas/Comm/ui_main_35.png
+- Assets/GameApp/Common/UI/Atlas/Comm/ui_frame_choose.png
+- Assets/GameApp/Common/UI/Atlas/Comm/ui_role_23.png
+- Assets/GameApp/Common/UI/Atlas/Comm/ui_role_11.png
+- Assets/GameApp/Common/UI/Atlas/Comm/ui_comm_btn_close.png
+- Assets/GameApp/Common/UI/Atlas/Comm/ui_main_86.png
+- Assets/GameApp/Common/UI/Atlas/Comm/ui_comm_sign_plus.png
+- Assets/GameApp/Common/UI/Atlas/Comm/ui_comm_tab_a_04_act.png
+- Assets/GameApp/Common/UI/Atlas/Comm/ui_comm_frame_rank_blue.png
+- Assets/GameApp/Common/UI/Atlas/Comm/ui_role_42.png
+- Assets/GameApp/Common/UI/Atlas/Comm/ui_comm_sign_lock.png
+- Assets/GameApp/Common/UI/Atlas/Comm/ui_main_26.png
+- Assets/GameApp/Common/UI/Atlas/Comm/ui_main_72.png
+- Assets/GameApp/Common/UI/Atlas/Comm/ui_main_03.png
+- Assets/GameApp/Common/UI/Atlas/Comm/ui_comm_sign_arrow_a.png
+- Assets/GameApp/Common/UI/Atlas/Comm/ui_comm_light_round.png
+- Assets/GameApp/Common/UI/Atlas/Comm/ui_comm_btn_frame.png
+- Assets/GameApp/Common/UI/Atlas/Comm/ui_comm_frame_choose_L.png
+- Assets/GameApp/Common/UI/Atlas/Comm/ui_comm_bg_underlay_e.png
+- Assets/GameApp/Common/UI/Atlas/Comm/ui_comm_frame_round.png
+- Assets/GameApp/Common/UI/Atlas/Comm/ui_comm_btn_c.png
+- Assets/GameApp/Common/UI/Atlas/Comm/ui_role_41.png
+- Assets/GameApp/Common/UI/Atlas/Comm/ui_comm_bg_underlay_f.png
+- Assets/GameApp/Common/UI/Atlas/Comm/ui_comm_sign_yuanbao.png
+- Assets/GameApp/Common/UI/Atlas/Comm/ui_comm_bg_underlay_a.png
+- Assets/GameApp/Common/UI/Atlas/Comm/ui_main_85.png
+- Assets/GameApp/Common/UI/Atlas/Comm/ui_comm_btn_b.png
+- Assets/GameApp/Common/UI/Atlas/Comm/ui_comm_tab_b_nor.png
+- Assets/GameApp/Common/UI/Atlas/Comm/ui_comm_bg_underlay_pic.png
+- Assets/GameApp/Common/UI/Atlas/Comm/ui_role_43.png
+- Assets/GameApp/Common/UI/Atlas/Comm/ui_comm_pic_moji.png
+- Assets/GameApp/Common/UI/Atlas/Comm/ui_comm_sign_tongqian.png
+- Assets/GameApp/Common/UI/Atlas/Comm/ui_comm_sign_plus_b.png
+- Assets/GameApp/Common/UI/Atlas/Comm/ui_comm_mask_round.png
+- Assets/GameApp/Common/UI/Atlas/Comm/ui_pet_17.png
+- Assets/GameApp/Common/UI/Atlas/Comm/ui_comm_frame_item.png
+- Assets/GameApp/Common/UI/Atlas/Comm/ui_comm_sign_numbg.png
+- Assets/GameApp/Common/UI/Atlas/Comm/ui_comm_mask_hexagon.png
+- Assets/GameApp/Common/UI/Atlas/Comm/ui_comm_line_d.png
+- Assets/GameApp/Common/UI/Atlas/Comm/ui_comm_line_a.png
+- Assets/GameApp/Common/UI/Atlas/Comm/ui_comm_tab_a_03_nor.png
+- Assets/GameApp/Common/UI/Atlas/Comm/ui_comm_tab_a_02_nor.png
+- Assets/GameApp/Common/UI/Atlas/Comm/ui_comm_bg_underlay_c.png
+- Assets/GameApp/Common/UI/Atlas/Comm/ui_comm_pic_table.png
+Dependencies: []

@@ -1,0 +1,84 @@
+ManifestFileVersion: 0
+CRC: 888103194
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: common/models/1001.assetbundle
+      Dependencies: {}
+    Info_1:
+      Name: common/shaders.assetbundle
+      Dependencies: {}
+    Info_2:
+      Name: common/ui/ani.assetbundle
+      Dependencies: {}
+    Info_3:
+      Name: common/ui/atlas/comm.assetbundle
+      Dependencies: {}
+    Info_4:
+      Name: common/ui/atlas/group.assetbundle
+      Dependencies: {}
+    Info_5:
+      Name: common/ui/atlas/hyper.assetbundle
+      Dependencies: {}
+    Info_6:
+      Name: common/ui/atlas/login.assetbundle
+      Dependencies: {}
+    Info_7:
+      Name: common/ui/atlas/role.assetbundle
+      Dependencies: {}
+    Info_8:
+      Name: common/ui/fonts/system_ttf.assetbundle
+      Dependencies: {}
+    Info_9:
+      Name: common/ui/fonts/system_art_ttf.assetbundle
+      Dependencies: {}
+    Info_10:
+      Name: common/ui/prefabs/common/uinoticetip_prefab.assetbundle
+      Dependencies:
+        Dependency_0: common/ui/ani.assetbundle
+        Dependency_1: common/ui/atlas/comm.assetbundle
+        Dependency_2: common/ui/fonts/system_ttf.assetbundle
+        Dependency_3: common/ui/fonts/system_art_ttf.assetbundle
+    Info_11:
+      Name: common/ui/prefabs/view/uibattlemain_prefab.assetbundle
+      Dependencies: {}
+    Info_12:
+      Name: common/ui/prefabs/view/uilaunch_prefab.assetbundle
+      Dependencies:
+        Dependency_0: common/ui/atlas/comm.assetbundle
+        Dependency_1: common/ui/atlas/role.assetbundle
+        Dependency_2: common/ui/fonts/system_ttf.assetbundle
+    Info_13:
+      Name: common/ui/prefabs/view/uiloading_prefab.assetbundle
+      Dependencies:
+        Dependency_0: common/ui/atlas/comm.assetbundle
+        Dependency_1: common/ui/atlas/role.assetbundle
+        Dependency_2: common/ui/fonts/system_ttf.assetbundle
+    Info_14:
+      Name: common/ui/prefabs/view/uilogin_prefab.assetbundle
+      Dependencies:
+        Dependency_0: common/ui/ani.assetbundle
+        Dependency_1: common/ui/atlas/comm.assetbundle
+        Dependency_2: common/ui/fonts/system_ttf.assetbundle
+        Dependency_3: common/ui/fonts/system_art_ttf.assetbundle
+    Info_15:
+      Name: common/ui/prefabs/view/uiloginserver_prefab.assetbundle
+      Dependencies:
+        Dependency_0: common/ui/ani.assetbundle
+        Dependency_1: common/ui/atlas/comm.assetbundle
+        Dependency_2: common/ui/atlas/group.assetbundle
+        Dependency_3: common/ui/atlas/login.assetbundle
+        Dependency_4: common/ui/fonts/system_ttf.assetbundle
+        Dependency_5: common/ui/fonts/system_art_ttf.assetbundle
+    Info_16:
+      Name: common/ui/prefabs/view/uitestmain_prefab.assetbundle
+      Dependencies:
+        Dependency_0: common/ui/ani.assetbundle
+        Dependency_1: common/ui/atlas/comm.assetbundle
+        Dependency_2: common/ui/fonts/system_art_ttf.assetbundle
+    Info_17:
+      Name: assetsmap_bytes.assetbundle
+      Dependencies: {}
+    Info_18:
+      Name: variantsmap_bytes.assetbundle
+      Dependencies: {}

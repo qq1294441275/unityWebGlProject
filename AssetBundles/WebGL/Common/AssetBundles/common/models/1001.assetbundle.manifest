@@ -1,0 +1,28 @@
+ManifestFileVersion: 0
+CRC: 3647153623
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: a211e161c05d34931e74c51a893a8791
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 893d84d101bc9e3d59f7126a32ea3131
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 23
+  Script: {instanceID: 0}
+- Class: 33
+  Script: {instanceID: 0}
+- Class: 111
+  Script: {instanceID: 0}
+- Class: 137
+  Script: {instanceID: 0}
+- Class: 143
+  Script: {instanceID: 0}
+Assets:
+- Assets/GameApp/Common/Models/1001/Character.prefab
+Dependencies: []

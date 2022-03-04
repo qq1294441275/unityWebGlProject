@@ -1,0 +1,45 @@
+ManifestFileVersion: 0
+CRC: 2324269585
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 8c3bbf57c8912f2ab5e5456f48a1821d
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 460b4f5d62b6facbccf7c01637df8f00
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+Assets:
+- Assets/GameApp/Common/UI/Atlas/Hyper/ui_hyper_emoji_01_2.tga
+- Assets/GameApp/Common/UI/Atlas/Hyper/ui_hyper_acer.png
+- Assets/GameApp/Common/UI/Atlas/Hyper/ui_hyper_emoji_02_2.tga
+- Assets/GameApp/Common/UI/Atlas/Hyper/ui_hyper_exp.png
+- Assets/GameApp/Common/UI/Atlas/Hyper/ui_hyper_chat_haoyou.png
+- Assets/GameApp/Common/UI/Atlas/Hyper/ui_hyper_career_03.png
+- Assets/GameApp/Common/UI/Atlas/Hyper/ui_hyper_chat_duiwu.png
+- Assets/GameApp/Common/UI/Atlas/Hyper/ui_hyper_career_06.png
+- Assets/GameApp/Common/UI/Atlas/Hyper/ui_hyper_book.png
+- Assets/GameApp/Common/UI/Atlas/Hyper/ui_hyper_career_01.png
+- Assets/GameApp/Common/UI/Atlas/Hyper/ui_hyper_money_03.png
+- Assets/GameApp/Common/UI/Atlas/Hyper/ui_hyper_money_02.png
+- Assets/GameApp/Common/UI/Atlas/Hyper/ui_hyper_emoji_01_1.tga
+- Assets/GameApp/Common/UI/Atlas/Hyper/ui_hyper_chat_shijie.png
+- Assets/GameApp/Common/UI/Atlas/Hyper/ui_hyper_emoji_02_1.tga
+- Assets/GameApp/Common/UI/Atlas/Hyper/ui_hyper_money_01.png
+- Assets/GameApp/Common/UI/Atlas/Hyper/ui_hyper_career_05.png
+- Assets/GameApp/Common/UI/Atlas/Hyper/ui_hyper_petexp.png
+- Assets/GameApp/Common/UI/Atlas/Hyper/ui_hyper_career_02.png
+- Assets/GameApp/Common/UI/Atlas/Hyper/ui_hyper_emoji_03_1.tga
+- Assets/GameApp/Common/UI/Atlas/Hyper/ui_hyper_emoji_03_2.tga
+- Assets/GameApp/Common/UI/Atlas/Hyper/ui_hyper_chat_bangpai.png
+- Assets/GameApp/Common/UI/Atlas/Hyper/ui_hyper_chat_xitong.png
+- Assets/GameApp/Common/UI/Atlas/Hyper/ui_hyper_copper.png
+- Assets/GameApp/Common/UI/Atlas/Hyper/ui_hyper_chat_xiaoxi.png
+- Assets/GameApp/Common/UI/Atlas/Hyper/ui_hyper_note.png
+- Assets/GameApp/Common/UI/Atlas/Hyper/ui_hyper_career_04.png
+- Assets/GameApp/Common/UI/Atlas/Hyper/ui_hyper_chat_dangqian.png
+Dependencies: []

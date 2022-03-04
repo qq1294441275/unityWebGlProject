@@ -1,0 +1,24 @@
+ManifestFileVersion: 0
+CRC: 3376352884
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 607f1ae466afe21231b5f91aa9cbdee8
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 460b4f5d62b6facbccf7c01637df8f00
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+Assets:
+- Assets/GameApp/Common/UI/Atlas/Login/login2_08.png
+- Assets/GameApp/Common/UI/Atlas/Login/login2_11.png
+- Assets/GameApp/Common/UI/Atlas/Login/login2_10.png
+- Assets/GameApp/Common/UI/Atlas/Login/login2_01.png
+- Assets/GameApp/Common/UI/Atlas/Login/login2_05.png
+- Assets/GameApp/Common/UI/Atlas/Login/login2_06.png
+- Assets/GameApp/Common/UI/Atlas/Login/ui_comm_217_187_241.png
+Dependencies: []

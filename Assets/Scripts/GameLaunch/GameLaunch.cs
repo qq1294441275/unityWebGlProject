@@ -7,10 +7,12 @@ using UnityEngine;
 
 public class GameLaunch : MonoBehaviour 
 {
+    [Header("此版本从热更架构修改过来的，现在是网络版本，不需要走热更，直接加载网络上AB资源就行")]
     const string launchPrefabPath = "Common/UI/Prefabs/View/UILaunch.prefab";
     const string noticeTipPrefabPath = "Common/UI/Prefabs/Common/UINoticeTip.prefab";
     GameObject launchPrefab;
     GameObject noticeTipPrefab;
+
     IEnumerator Start()
     {
         // 初始化App版本
@@ -34,6 +36,12 @@ public class GameLaunch : MonoBehaviour
         yield return InitNoticeTipPrefab();
 
 
+
+        UIWindow uIWindow = new UIWindow();
+        GameObject gameObject = new GameObject("testView");
+        UIMain uIMain = gameObject.AddComponent<UIMain>();
+        uIWindow.View = uIMain;
+        Debug.LogError(uIWindow.View.name);
     }
     ///初始话网页版的版本
     IEnumerator InitAppVersion()

@@ -176,7 +176,13 @@ public class UINoticeTip : MonoSingleton<UINoticeTip>
             go.SetActive(false);
         }
     }
-
+    public IEnumerator WaitForResponse()
+    {
+        yield return new WaitUntil(() => {
+            return LastClickIndex != -1;
+        });
+        yield break;
+    }
 
     public float progress
     {

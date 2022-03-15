@@ -12,14 +12,14 @@ public class UILayer
     public int TopWindowOrder;
     public int MinWindowOrder;
 
-    public void OnCreate(Transform trans, layer layer) 
+    public void OnCreate(GameObject layer_go, layer layer) 
     {
-        this.UILayerObj = trans.gameObject;
+        this.UILayerObj = layer_go;
 
-        this.UnityCanvas = UIUtil.FindComponent<Canvas>(trans);
+        this.UnityCanvas = UIUtil.FindComponent<Canvas>(layer_go);
         if (this.UnityCanvas == null) 
         {
-            this.UnityCanvas = trans.gameObject.AddComponent<Canvas>();
+            this.UnityCanvas = layer_go.AddComponent<Canvas>();
         }
         this.UnityCanvas.renderMode = RenderMode.ScreenSpaceCamera;
         this.UnityCanvas.worldCamera = UIManager.instance.UICamera;
@@ -27,10 +27,10 @@ public class UILayer
         this.UnityCanvas.sortingLayerName = SortingLayerNames.UI;
         this.UnityCanvas.sortingOrder = layer.OrderInLayer;
 
-        this.UnityCanvasScaler = UIUtil.FindComponent<CanvasScaler>(trans);
+        this.UnityCanvasScaler = UIUtil.FindComponent<CanvasScaler>(layer_go);
         if (this.UnityCanvasScaler == null)
         {
-            this.UnityCanvasScaler = trans.gameObject.AddComponent<CanvasScaler>();
+            this.UnityCanvasScaler = layer_go.AddComponent<CanvasScaler>();
         }
         this.UnityCanvasScaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
         this.UnityCanvasScaler.screenMatchMode = CanvasScaler.ScreenMatchMode.MatchWidthOrHeight;
@@ -39,11 +39,11 @@ public class UILayer
 
         //raycaster
 
-        this.UnityGraphicRaycaster = UIUtil.FindComponent<GraphicRaycaster>(trans);
+        this.UnityGraphicRaycaster = UIUtil.FindComponent<GraphicRaycaster>(layer_go);
 
         if (this.UnityGraphicRaycaster == null) 
         {
-            this.UnityGraphicRaycaster = trans.gameObject.AddComponent<GraphicRaycaster>();
+            this.UnityGraphicRaycaster = layer_go.AddComponent<GraphicRaycaster>();
         }
 
         //window order

@@ -24,13 +24,8 @@ public class UIBaseView : MonoBehaviour
 
 
 
+    public virtual void Dispose()
+    {
 
-
-
-
-
-
-
-
-
+    }
 }

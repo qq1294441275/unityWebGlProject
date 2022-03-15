@@ -39,6 +39,7 @@ public class UIManager : Singleton<UIManager>
 
 	public override void Init() 
 	{
+		base.Init();
 		//UI消息中心
 		UIMessage = new Messenger();
 		//初始化所有的窗体
@@ -69,8 +70,9 @@ public class UIManager : Singleton<UIManager>
 		{
 			layer temp_layer = layers[i];
 			GameObject ui_layer_obj = new GameObject(temp_layer.Name);
+			ui_layer_obj.transform.SetParent(this.UIRootObj.transform, false);
 			UILayer ui_layer = new UILayer();
-			ui_layer.OnCreate(ui_layer_obj.transform, temp_layer);
+			ui_layer.OnCreate(ui_layer_obj, temp_layer);
 			Alllayers.Add(temp_layer.Name, ui_layer);
 		}
 
@@ -188,7 +190,7 @@ public class UIManager : Singleton<UIManager>
 		else if (!target.IsLoading) 
 		{
 			target.IsLoading = true;
-			GameObjectPool.instance.GetGameObjectAsync(target.PrefabPath, (go) =>
+			ResourcesPool.Instance.GetGameObjectAsync(target.PrefabPath, (go) =>
 			 {
 				 if (go == null)
 					 return;
@@ -301,9 +303,87 @@ public class UIManager : Singleton<UIManager>
 		target.View.gameObject.SetActive(!is_close);
 	}
 
+	public void InnerDestroyWindow(bool include_keep_model, UIWindow target, string ui_name, bool is_destroy_inst = false) 
+	{
+		this.Broadcast(new EventMessageEX<UIWindow>(UIMessageNames.UIFRAME_ON_WINDOW_DESTROY, target));
+		ResourcesPool.Instance.RecycleGameObject(target.PrefabPath, target.View.gameObject);
+		if (is_destroy_inst) 
+			ResourcesPool.Instance.DestoryGameObject(target.PrefabPath);
+		if (include_keep_model)
+		{
+			if (KeepModels[ui_name] != null)
+				KeepModels.Remove(ui_name);
+			target.Model.Dispose();
+		}
+		else
+			target.Model.Dispose();
+		target.Ctrl.Dispose();
+		target.View.Dispose();
+		this.AllWindow.Remove(ui_name);
+    }
 
+	public void DestroyWindow(bool include_keep_model, string ui_name, bool is_destroy_inst = false) 
+	{
+		UIWindow target = this.GetWindow(ui_name);
+		if (target == null)
+		{
+			return;
+		}
+		InnerCloseWindow(target);
+		InnerDestroyWindow(include_keep_model, target, ui_name, is_destroy_inst);
+	}
 
+	public void DestroyWindowByLayer(LayerEnum layer_enum, bool include_keep_model, bool is_destroy_inst = false)
+	{
+		List<string> temp_layer_name = new List<string>();
+		foreach (var temp_windows in this.AllWindow)
+		{
+			WindowConfig window_config = UIWindowConfig.instance.GetWindowConfig(temp_windows.Value.Name);
+			if (window_config.Layer.LayerEnum == layer_enum) 
+			{
+				InnerCloseWindow(temp_windows.Value);
+				temp_layer_name.Add(temp_windows.Key);
+			}
+		}
+        for (int i = 0; i < temp_layer_name.Count; i++)
+        {
+			string ui_name = temp_layer_name[i];
+			InnerDestroyWindow(include_keep_model, this.AllWindow[ui_name],ui_name,is_destroy_inst);
+		}
+	}
 
+	public void DestroyWindowExceptLayer(LayerEnum layer_enum, bool include_keep_model, bool is_destroy_inst = false)
+	{
+		List<string> temp_layer_name = new List<string>();
+		foreach (var temp_windows in this.AllWindow)
+		{
+			WindowConfig window_config = UIWindowConfig.instance.GetWindowConfig(temp_windows.Value.Name);
+			if (window_config.Layer.LayerEnum != layer_enum)
+			{
+				InnerCloseWindow(temp_windows.Value);
+				temp_layer_name.Add(temp_windows.Key);
+			}
+		}
+		for (int i = 0; i < temp_layer_name.Count; i++)
+		{
+			string ui_name = temp_layer_name[i];
+			InnerDestroyWindow(include_keep_model, this.AllWindow[ui_name], ui_name, is_destroy_inst);
+		}
+	}
+	public void DestroyAllWindow(bool include_keep_model, bool is_destroy_inst = false)
+	{
+		List<string> temp_layer_name = new List<string>();
+		foreach (var temp_windows in this.AllWindow)
+		{
+			InnerCloseWindow(temp_windows.Value);
+			temp_layer_name.Add(temp_windows.Key);
+		}
+		for (int i = 0; i < temp_layer_name.Count; i++)
+		{
+			string ui_name = temp_layer_name[i];
+			InnerDestroyWindow(include_keep_model, this.AllWindow[ui_name], ui_name, is_destroy_inst);
+		}
+	}
 
 	public override void Dispose()
 	{

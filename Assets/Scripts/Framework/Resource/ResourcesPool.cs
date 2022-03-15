@@ -1,47 +1,37 @@
-﻿using UnityEngine;
+﻿using System;
 using System.Collections.Generic;
-using System;
+using UnityEngine;
 
-public class GameObjectPool : Singleton<GameObjectPool> 
+public class ResourcesPool : MonoSingleton<ResourcesPool> 
 {
-    public Transform CacheTrnasRoot = null;
     private Dictionary<string, GameObject> GoPool = null;
     private Dictionary<string, GameObject> InstCache = null;
 
-
-
-    public override void Init()
+    //初始化
+    protected override void Init()
     {
-
-        GameObject GameObjectCacheRoot = GameObject.Find("GameObjectCacheRoot");
-        if (GameObjectCacheRoot == null) 
-        {
-            GameObjectCacheRoot = new GameObject("GameObjectCacheRoot");
-            GameObject.DontDestroyOnLoad(GameObjectCacheRoot);
-        }
-        this.CacheTrnasRoot = GameObjectCacheRoot.transform;
+        base.Init();
         InstCache = new Dictionary<string, GameObject>();
         GoPool = new Dictionary<string, GameObject>();
     }
-
-    public void InitInst(GameObject Inst) 
+    ///激活实例
+    public void InitInst(GameObject Inst)
     {
-        if (Inst != null) 
+        if (Inst != null)
         {
             Inst.SetActive(true);
         }
     }
-
+    /// <summary>
+    /// 判断是否存在实例
+    /// </summary>
+    /// <returns></returns>
     public bool CheckHasCached(string path) 
     {
-        if (path == string.Empty || path == "") 
+        if (path == string.Empty || path == "")
         {
             Debug.LogErrorFormat("The CheckHasCached for {0} is Empty", path);
             return false;
-        }
-        if (InstCache[path] != null) 
-        {
-            return true;
         }
         if (GoPool[path] != null)
         {
@@ -50,7 +40,9 @@ public class GameObjectPool : Singleton<GameObjectPool>
         Debug.LogErrorFormat("The CheckHasCached obj for {0} is Empty", path);
         return false;
     }
-
+    /// <summary>
+    /// 添加缓存和实例
+    /// </summary>
     public void CacheAndInstGameObject(string path, GameObject go)
     {
         if (go == null)
@@ -60,11 +52,10 @@ public class GameObjectPool : Singleton<GameObjectPool>
         }
         GoPool.Add(path, go);
         GameObject inst = GameObject.Instantiate(go);
-        inst.transform.SetParent(this.CacheTrnasRoot);
+        inst.transform.SetParent(this.transform,false);
         inst.SetActive(false);
         InstCache.Add(path, inst);
     }
-
 
     public GameObject TryGetFromCache(string path)
     {
@@ -75,7 +66,7 @@ public class GameObjectPool : Singleton<GameObjectPool>
             return inst;
         }
         inst = InstCache[path];
-        if (inst != null) 
+        if (inst != null)
         {
             InstCache.Remove(path);
             return inst;
@@ -89,9 +80,9 @@ public class GameObjectPool : Singleton<GameObjectPool>
         return inst;
     }
     //预加载：可提供初始实例化
-    public void PreLoadGameObjectAsync(string path, Action callback) 
+    public void PreLoadGameObjectAsync(string path, Action callback)
     {
-        if (this.CheckHasCached(path)) 
+        if (this.CheckHasCached(path))
         {
             if (callback != null)
                 callback();
@@ -106,32 +97,47 @@ public class GameObjectPool : Singleton<GameObjectPool>
         });
     }
     //异步获取
-    public void GetGameObjectAsync(string path, Action<GameObject> callback) 
+    public void GetGameObjectAsync(string path, Action<GameObject> callback)
     {
         var inst = this.TryGetFromCache(path);
-        if (inst != null) 
+        if (inst != null)
         {
             InitInst(inst);
-            callback(inst);
+            if(callback != null)
+                callback(inst);
+            return;
         }
         this.PreLoadGameObjectAsync(path, () =>
         {
             inst = this.TryGetFromCache(path);
-            InitInst(inst);
+            if (callback != null)
+                callback(inst);
             callback(inst);
         });
     }
+
     //回收
-    public void RecycleGameObject(string path, GameObject inst) 
+    public void RecycleGameObject(string path, GameObject inst)
     {
-        inst.transform.SetParent(CacheTrnasRoot);
+        inst.transform.SetParent(this.transform);
         inst.SetActive(false);
         GameObject temp_inst;
-        if (!InstCache.TryGetValue(path, out temp_inst)) 
+        if (!InstCache.TryGetValue(path, out temp_inst))
             InstCache.Add(path, inst);
     }
 
-    public void CleanUp(bool include_pooled_go) 
+    //删除
+    public void DestoryGameObject(string path)
+    {
+        GameObject temp_inst;
+        if (InstCache.TryGetValue(path, out temp_inst))
+        {
+            InstCache.Remove(path);
+            GameObject.Destroy(temp_inst);
+        }  
+    }
+
+    public void CleanUp(bool include_pooled_go)
     {
         foreach (var inst in InstCache)
         {
@@ -142,8 +148,6 @@ public class GameObjectPool : Singleton<GameObjectPool>
         if (include_pooled_go)
             GoPool.Clear();
     }
-
-
     public override void Dispose()
     {
 

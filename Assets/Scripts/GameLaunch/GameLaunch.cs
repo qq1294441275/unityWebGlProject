@@ -31,17 +31,15 @@ public class GameLaunch : MonoBehaviour
         Debug.Log(string.Format("AssetBundleManager Initialize use {0}ms", (DateTime.Now - start).Milliseconds));
 
         // 初始化UI界面
-        yield return InitLaunchPrefab();
-        yield return null;
-        yield return InitNoticeTipPrefab();
+        //yield return InitLaunchPrefab();
+        //yield return null;
+        //yield return InitNoticeTipPrefab();
 
 
-
-        UIWindow uIWindow = new UIWindow();
-        GameObject gameObject = new GameObject("testView");
-        UIMain uIMain = gameObject.AddComponent<UIMain>();
-        uIWindow.View = uIMain;
-        Debug.LogError(uIWindow.View.name);
+        //开始游戏
+        UIManager.instance.Startup();
+        UIWindowConfig.instance.Startup();
+        GameObject.Destroy(this.gameObject);
     }
     ///初始话网页版的版本
     IEnumerator InitAppVersion()

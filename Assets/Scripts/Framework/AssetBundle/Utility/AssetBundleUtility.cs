@@ -106,7 +106,7 @@ namespace AssetBundles
         {
             if (is_webGL) 
             {
-                Debug.LogError(GetWebFilePath(filePath));
+                //Debug.LogError(GetWebFilePath(filePath));
                 return GetWebFilePath(filePath);
             }
 

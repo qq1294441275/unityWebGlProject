@@ -20,6 +20,13 @@ public abstract class Singleton<T> where T : class, new()
             return Singleton<T>.m_instance;
         }
 	}
+	/*
+	 * 没有任何实现的函数，用于保证MonoSingleton在使用前已创建
+	 */
+	public void Startup()
+	{
+
+	}
 
 	public static void Release()
 	{

@@ -79,8 +79,10 @@
      <Compile Include="Assets\Scripts\Framework\Common\Messenger.cs" />
      <Compile Include="Assets\Scripts\Framework\Component\UILayer.cs" />
      <Compile Include="Assets\Scripts\Framework\Message\UIMessageNames.cs" />
-     <Compile Include="Assets\Scripts\Framework\Resource\GameObjectPool.cs" />
      <Compile Include="Assets\Scripts\Framework\Resource\ResourcesManager.cs" />
+     <Compile Include="Assets\Scripts\Framework\Resource\ResourcesPool.cs" />
+     <Compile Include="Assets\Scripts\Framework\Scene\Base\SceneBase.cs" />
+     <Compile Include="Assets\Scripts\Framework\Scene\SceneManager.cs" />
      <Compile Include="Assets\Scripts\Framework\UI\Base\UIBaseCtrl.cs" />
      <Compile Include="Assets\Scripts\Framework\UI\Base\UIBaseModel.cs" />
      <Compile Include="Assets\Scripts\Framework\UI\Base\UIBaseView.cs" />
@@ -89,6 +91,7 @@
      <Compile Include="Assets\Scripts\Framework\UI\UIManager.cs" />
      <Compile Include="Assets\Scripts\Framework\UI\UIWindow.cs" />
      <Compile Include="Assets\Scripts\Framework\UI\Util\UIUtil.cs" />
+     <Compile Include="Assets\Scripts\GameApp\Model\UILoadingModel.cs" />
      <Compile Include="Assets\Scripts\GameApp\View\UILogin.cs" />
      <Compile Include="Assets\Scripts\GameApp\View\UIMain.cs" />
      <Compile Include="Assets\Scripts\GameApp\View\UINoticeTip.cs" />

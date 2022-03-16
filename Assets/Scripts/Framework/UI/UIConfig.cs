@@ -41,7 +41,7 @@ public class UIWindowConfig : Singleton<UIWindowConfig>
 
     public void InitList() 
     {
-
+        UILoadingConfig.instance.InitConfig(UIWindowConfigList);
     }
 
     public WindowConfig GetWindowConfig(string ui_name) 

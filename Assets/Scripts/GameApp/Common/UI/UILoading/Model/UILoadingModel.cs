@@ -15,4 +15,10 @@ public class UILoadingModel : UIBaseModel
         base.OnDisable();
         this.value = 0.0f;
     }
+    public void SetValue(float progress) 
+    {
+        this.value += progress;
+        if (this.value >= 1)
+            this.value = 1;
+    }
 }

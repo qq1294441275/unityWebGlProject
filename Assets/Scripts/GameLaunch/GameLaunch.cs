@@ -38,8 +38,10 @@ public class GameLaunch : MonoBehaviour
 
         //开始游戏
         UIManager.instance.Startup();
+        ProjSceneManager.Instance.Startup();
         UIWindowConfig.instance.Startup();
         GameObject.Destroy(this.gameObject);
+        ProjSceneManager.Instance.SwitchScene(SceneEnum.LoginScene);
     }
     ///初始话网页版的版本
     IEnumerator InitAppVersion()

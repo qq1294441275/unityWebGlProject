@@ -12,10 +12,10 @@ public class SceneConfig
     private void Init() 
     {
         this.AddSceneInstance(new SceneInstance(SceneEnum.LaunchScene, 0, "LaunchScene"));
-        this.AddSceneInstance(new SceneInstance(SceneEnum.LoadingScene, 0, "LoadingScene"));
-        this.AddSceneInstance(new SceneInstance(SceneEnum.LoginScene, 1, "LoginScene"));
-        this.AddSceneInstance(new SceneInstance(SceneEnum.HomeScene, 2, "HomeScene"));
-        this.AddSceneInstance(new SceneInstance(SceneEnum.BattleScene, 3, "BattleScene"));
+        this.AddSceneInstance(new SceneInstance(SceneEnum.LoadingScene, 1, "LoadingScene"));
+        this.AddSceneInstance(new SceneInstance(SceneEnum.LoginScene, 2, "LoginScene"));
+        this.AddSceneInstance(new SceneInstance(SceneEnum.HomeScene, 3, "HomeScene"));
+        this.AddSceneInstance(new SceneInstance(SceneEnum.BattleScene, 4, "BattleScene"));
     }
 
     private void AddSceneInstance(SceneInstance scene_inst) 
@@ -75,7 +75,7 @@ public class ScenePreLoad
 }
 
 //场景基类，各场景类从这里继承：提供统一的场景加载和初始化步骤，负责资源预加载
-public class SceneBase : MonoBehaviour  
+public class SceneBase  
 {
     public SceneInstance SceneInstance;
     ///目前只添加GameObject 类型的
@@ -123,7 +123,11 @@ public class SceneBase : MonoBehaviour
         this.PreTotalCount = this.PreloadPrefab.Count;
         if (this.PreTotalCount <= 0) 
         {
-            Debug.LogErrorFormat("this scene {0} preload count is  0", this.SceneInstance.Name);
+            Debug.LogFormat("this scene {0} preload count is  0", this.SceneInstance.Name);
+            if (action != null)
+            {
+                action.Invoke(true, 1);
+            }
             return;
         }
         this.PreLoadCount = 0;

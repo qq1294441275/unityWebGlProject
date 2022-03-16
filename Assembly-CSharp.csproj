@@ -82,7 +82,8 @@
      <Compile Include="Assets\Scripts\Framework\Resource\ResourcesManager.cs" />
      <Compile Include="Assets\Scripts\Framework\Resource\ResourcesPool.cs" />
      <Compile Include="Assets\Scripts\Framework\Scene\Base\SceneBase.cs" />
-     <Compile Include="Assets\Scripts\Framework\Scene\SceneManager.cs" />
+     <Compile Include="Assets\Scripts\Framework\Scene\ProjSceneManager.cs" />
+     <Compile Include="Assets\Scripts\Framework\UI\Base\UIbaseConfig.cs" />
      <Compile Include="Assets\Scripts\Framework\UI\Base\UIBaseCtrl.cs" />
      <Compile Include="Assets\Scripts\Framework\UI\Base\UIBaseModel.cs" />
      <Compile Include="Assets\Scripts\Framework\UI\Base\UIBaseView.cs" />
@@ -91,7 +92,14 @@
      <Compile Include="Assets\Scripts\Framework\UI\UIManager.cs" />
      <Compile Include="Assets\Scripts\Framework\UI\UIWindow.cs" />
      <Compile Include="Assets\Scripts\Framework\UI\Util\UIUtil.cs" />
-     <Compile Include="Assets\Scripts\GameApp\Model\UILoadingModel.cs" />
+     <Compile Include="Assets\Scripts\GameApp\Common\UI\UILoading\Model\UILoadingModel.cs" />
+     <Compile Include="Assets\Scripts\GameApp\Common\UI\UILoading\UILoadingConfig.cs" />
+     <Compile Include="Assets\Scripts\GameApp\Common\UI\UILoading\View\UILoading.cs" />
+     <Compile Include="Assets\Scripts\GameApp\Scenes\BattleScene.cs" />
+     <Compile Include="Assets\Scripts\GameApp\Scenes\HomeScene.cs" />
+     <Compile Include="Assets\Scripts\GameApp\Scenes\LaunchScene.cs" />
+     <Compile Include="Assets\Scripts\GameApp\Scenes\LoadingScene.cs" />
+     <Compile Include="Assets\Scripts\GameApp\Scenes\LoginScene.cs" />
      <Compile Include="Assets\Scripts\GameApp\View\UILogin.cs" />
      <Compile Include="Assets\Scripts\GameApp\View\UIMain.cs" />
      <Compile Include="Assets\Scripts\GameApp\View\UINoticeTip.cs" />

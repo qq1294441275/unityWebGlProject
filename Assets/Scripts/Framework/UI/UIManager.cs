@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -36,6 +37,8 @@ public class UIManager : Singleton<UIManager>
 	public List<string> WindowStack = null;
 	//是否启用记录
 	bool EnableRecord = true;
+	//所有layer
+	public UILayers UILayersInstance;
 
 	public override void Init() 
 	{
@@ -59,23 +62,29 @@ public class UIManager : Singleton<UIManager>
 		this.EventSystem = GameObject.Find(EventSystemPath);
 		GameObject.DontDestroyOnLoad(this.EventSystem);
 
-		UILayers UILayers = new UILayers();
-		List<layer> layers = UILayers.GetAllLayer;
+		UILayersInstance = new UILayers();
+		Dictionary<LayerEnum, layer> layers = UILayersInstance.GetAllLayer;
 		if (layers == null || layers.Count <= 0) 
 		{
 			Debug.LogError("Init UIManager failed");
 			return;
 		}
-		for (int i = 0; i < layers.Count; i++)
-		{
-			layer temp_layer = layers[i];
+        foreach (var item in layers)
+        {
+			layer temp_layer = item.Value;
 			GameObject ui_layer_obj = new GameObject(temp_layer.Name);
 			ui_layer_obj.transform.SetParent(this.UIRootObj.transform, false);
 			UILayer ui_layer = new UILayer();
 			ui_layer.OnCreate(ui_layer_obj, temp_layer);
 			Alllayers.Add(temp_layer.Name, ui_layer);
 		}
-
+	}
+	//根据ui类型获取UILayer
+	public UILayer GetUILayerByType(string layer_name) 
+	{
+		UILayer temp_layer = null;
+		this.Alllayers.TryGetValue(layer_name, out temp_layer);
+		return temp_layer;
 	}
 
     #region UI事件处理
@@ -104,13 +113,26 @@ public class UIManager : Singleton<UIManager>
 	//得到一个窗口
 	public UIWindow GetWindow(string ui_name, bool active = false, bool view_active = false) 
 	{
-		UIWindow ui_window = AllWindow[ui_name];
-		if (ui_window == null)
+		UIWindow ui_window = null;
+		AllWindow.TryGetValue(ui_name, out ui_window);
+		if (ui_window == null) 
+		{
+			//Debug.LogError("11111111111");
 			return null;
+		}
+			
 		if (ui_window.Active != active)
+		{
+			//Debug.LogError("2222222222");
 			return null;
-		if (ui_window.View.gameObject.activeSelf != view_active)
+		}
+			
+		if (ui_window.View.ViewRoot.activeSelf != view_active) 
+		{
+			//Debug.LogError("333333333333");
 			return null;
+		}
+			
 		return ui_window;
 	}
 	//初始化窗口
@@ -129,7 +151,8 @@ public class UIManager : Singleton<UIManager>
 			return null;
 		}
 		window.Name = ui_name;
-		if (KeepModels[ui_name] != null)
+		UIBaseModel ui_base_model;
+		if (KeepModels.TryGetValue(ui_name,out ui_base_model))
 			window.Model = KeepModels[ui_name];
 		else
 			window.Model = window_config.model;
@@ -154,7 +177,7 @@ public class UIManager : Singleton<UIManager>
 			return;
 		}
 		target.Model.Activate<T>(data);
-		target.View.gameObject.SetActive(true);
+		target.View.ViewRoot.SetActive(true);
 		this.Broadcast(new EventMessageEX<UIWindow>(UIMessageNames.UIFRAME_ON_WINDOW_OPEN, target));
 	}
 	//反激活窗口
@@ -166,11 +189,11 @@ public class UIManager : Singleton<UIManager>
 			return;
 		}
 		target.Model.Deactivate();
-		target.View.gameObject.SetActive(false);
+		target.View.ViewRoot.SetActive(false);
 		this.Broadcast(new EventMessageEX<UIWindow>(UIMessageNames.UIFRAME_ON_WINDOW_CLOSE, target));
 	}
 	//打开窗口：私有，必要时准备资源
-	private void InnerOpenWindow<T>(UIWindow target,T data) 
+	private void InnerOpenWindow<T>(UIWindow target,T data, Action<bool> action) 
 	{
 		if (target == null)
 		{
@@ -180,10 +203,10 @@ public class UIManager : Singleton<UIManager>
 		target.Active = true;
 		bool has_view = target.View != null;
 		bool has_prefab_res = target.PrefabPath != string.Empty;
-		bool has_loaded = target.View.gameObject != null;
+		bool has_loaded = target.View.ViewRoot != null;
 
 		bool need_load = has_view && has_prefab_res && !has_loaded;
-		if (need_load)
+		if (!need_load)
 		{
 			ActivateWindow<T>(target, data);
 		}
@@ -193,17 +216,27 @@ public class UIManager : Singleton<UIManager>
 			ResourcesPool.Instance.GetGameObjectAsync(target.PrefabPath, (go) =>
 			 {
 				 if (go == null)
+				 {
+					 Debug.LogError("加载窗口物体为空");
 					 return;
+				 }
+					 
 				 Transform trans = go.transform;
 				 trans.SetParent(target.Layer.UILayerObj.transform);
+				 trans.localPosition = Vector3.zero;
+				 trans.localScale = Vector3.one;
 				 trans.name = target.Name;
 
 				 target.IsLoading = false;
-				 target.View = go.GetComponent<UIBaseView>();
+				 target.View.ViewRoot = go;
 				 target.View.OnCreate();
 				 if (target.Active) 
 				 {
 					 ActivateWindow<T>(target, data);
+				 }
+				 if (action != null) 
+				 {
+					 action(true);
 				 }
 			 });
 		} 
@@ -219,7 +252,7 @@ public class UIManager : Singleton<UIManager>
 	}
 
 	//打开窗口：公有
-	public void OpenWindow<T>(string ui_name, T data) 
+	public void OpenWindow<T>(string ui_name, T data, Action<bool> action) 
 	{
 		UIWindow target = this.GetWindow(ui_name);
 		if (target == null) 
@@ -229,7 +262,7 @@ public class UIManager : Singleton<UIManager>
 			target = InitWindow(ui_name, window);
 		}
 		InnerCloseWindow(target);
-		InnerOpenWindow<T>(target, data);
+		InnerOpenWindow<T>(target, data, action);
 
 		WindowConfig window_config = UIWindowConfig.instance.GetWindowConfig(ui_name);
 		if (window_config.Layer.LayerEnum == LayerEnum.BackgroudLayer)
@@ -300,13 +333,13 @@ public class UIManager : Singleton<UIManager>
 		{
 			return;
 		}
-		target.View.gameObject.SetActive(!is_close);
+		target.View.ViewRoot.SetActive(!is_close);
 	}
 
 	public void InnerDestroyWindow(bool include_keep_model, UIWindow target, string ui_name, bool is_destroy_inst = false) 
 	{
 		this.Broadcast(new EventMessageEX<UIWindow>(UIMessageNames.UIFRAME_ON_WINDOW_DESTROY, target));
-		ResourcesPool.Instance.RecycleGameObject(target.PrefabPath, target.View.gameObject);
+		ResourcesPool.Instance.RecycleGameObject(target.PrefabPath, target.View.ViewRoot);
 		if (is_destroy_inst) 
 			ResourcesPool.Instance.DestoryGameObject(target.PrefabPath);
 		if (include_keep_model)

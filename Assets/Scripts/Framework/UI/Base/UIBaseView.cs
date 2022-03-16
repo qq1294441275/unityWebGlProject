@@ -1,12 +1,13 @@
 ﻿using UnityEngine;
 
-public class UIBaseView : MonoBehaviour
+public class UIBaseView
 {
     public UILayer Holder;
     public UIBaseModel Model;
     public UIBaseCtrl Ctrl;
     public Canvas Canvas;
     public int BaseOrder = 0;
+    public GameObject ViewRoot;
 
     public UIBaseView(UILayer holder, UIBaseModel model, UIBaseCtrl ctrl) 
     {

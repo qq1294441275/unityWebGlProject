@@ -28,16 +28,21 @@ public class ResourcesPool : MonoSingleton<ResourcesPool>
     /// <returns></returns>
     public bool CheckHasCached(string path) 
     {
+        GameObject go = null;
         if (path == string.Empty || path == "")
         {
             Debug.LogErrorFormat("The CheckHasCached for {0} is Empty", path);
             return false;
         }
-        if (GoPool[path] != null)
+        if (InstCache.TryGetValue(path, out go))
         {
             return true;
         }
-        Debug.LogErrorFormat("The CheckHasCached obj for {0} is Empty", path);
+        if (GoPool.TryGetValue(path, out go))
+        {
+            return true;
+        }
+        //Debug.LogErrorFormat("The CheckHasCached obj for {0} is Empty", path);
         return false;
     }
     /// <summary>
@@ -60,18 +65,19 @@ public class ResourcesPool : MonoSingleton<ResourcesPool>
     public GameObject TryGetFromCache(string path)
     {
         GameObject inst = null;
-        if (this.CheckHasCached(path))
+        if (!this.CheckHasCached(path))
         {
-            Debug.LogErrorFormat("The CacheGo for {0} is Empty", path);
+            //Debug.LogErrorFormat("The CacheGo for {0} is Empty", path);
             return inst;
         }
-        inst = InstCache[path];
+        InstCache.TryGetValue(path, out inst);
         if (inst != null)
         {
             InstCache.Remove(path);
             return inst;
         }
-        GameObject pooled_go = GoPool[path];
+        GameObject pooled_go = null;
+        GoPool.TryGetValue(path, out pooled_go);
         if (pooled_go != null)
         {
             inst = GameObject.Instantiate(pooled_go);
@@ -110,9 +116,9 @@ public class ResourcesPool : MonoSingleton<ResourcesPool>
         this.PreLoadGameObjectAsync(path, () =>
         {
             inst = this.TryGetFromCache(path);
+            InitInst(inst);
             if (callback != null)
                 callback(inst);
-            callback(inst);
         });
     }
 

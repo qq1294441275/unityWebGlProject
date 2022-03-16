@@ -38,25 +38,31 @@ public class SortingLayerNames
 
 public class UILayers  
 {
-	private List<layer> AllLayers = null;
+	private Dictionary<LayerEnum, layer> AllLayers = null;
 	public UILayers() 
 	{
-		AllLayers = new List<layer>();
+		AllLayers = new Dictionary<LayerEnum, layer>();
 		this.Init();
 	}
 
 	public void Init() 
 	{
-		AllLayers.Add(new layer(LayerEnum.SceneLayer,"SceneLayer", 1000, 0));
-		AllLayers.Add(new layer(LayerEnum.BackgroudLayer, "BackgroudLayer", 900, 1000));
-		AllLayers.Add(new layer(LayerEnum.NormalLayer, "NormalLayer", 800, 2000));
-		AllLayers.Add(new layer(LayerEnum.InfoLayer, "InfoLayer", 700, 3000));
-		AllLayers.Add(new layer(LayerEnum.TipLayer, "TipLayer", 600, 4000));
-		AllLayers.Add(new layer(LayerEnum.TopLayer, "TopLayer", 500, 5000));
+		AllLayers.Add(LayerEnum.SceneLayer, new layer(LayerEnum.SceneLayer,"SceneLayer", 1000, 0));
+		AllLayers.Add(LayerEnum.BackgroudLayer, new layer(LayerEnum.BackgroudLayer, "BackgroudLayer", 900, 1000));
+		AllLayers.Add(LayerEnum.NormalLayer, new layer(LayerEnum.NormalLayer, "NormalLayer", 800, 2000));
+		AllLayers.Add(LayerEnum.InfoLayer, new layer(LayerEnum.InfoLayer, "InfoLayer", 700, 3000));
+		AllLayers.Add(LayerEnum.TipLayer, new layer(LayerEnum.TipLayer, "TipLayer", 600, 4000));
+		AllLayers.Add(LayerEnum.TopLayer, new layer(LayerEnum.TopLayer, "TopLayer", 500, 5000));
 	}
-	public List<layer> GetAllLayer 
+	public Dictionary<LayerEnum, layer> GetAllLayer 
 	{
 		get { return this.AllLayers; }
+	}
+	public layer GetLayerByType(LayerEnum layer_enum) 
+	{
+		layer temp_layer = null;
+		this.AllLayers.TryGetValue(layer_enum, out temp_layer);
+		return temp_layer;
 	}
 
 	public void Dispose() 

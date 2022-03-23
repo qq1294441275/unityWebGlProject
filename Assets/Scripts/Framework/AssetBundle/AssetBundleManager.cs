@@ -566,7 +566,7 @@ namespace AssetBundles
             string assetbundleName = null;
             string assetName = null;
             bool status = MapAssetPath(assetPath, out assetbundleName, out assetName);
-            //Debug.LogError(assetbundleName + "    " + assetPath);
+            Debug.LogError(assetbundleName + "    " + assetPath);
             if (!status)
             {
                 Debug.LogError("No assetbundle at asset path :" + assetPath);

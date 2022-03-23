@@ -40,6 +40,9 @@ public class GameLaunch : MonoBehaviour
         UIManager.instance.Startup();
         ProjSceneManager.Instance.Startup();
         UIWindowConfig.instance.Startup();
+#if UNITY_WEBGL
+        NetworkManager.Instance.Startup();
+#endif
         GameObject.Destroy(this.gameObject);
         ProjSceneManager.Instance.SwitchScene(SceneEnum.LoginScene);
     }
